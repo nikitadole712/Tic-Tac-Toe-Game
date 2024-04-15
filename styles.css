@@ -1,0 +1,244 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+/* Add this CSS to your existing styles */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    grid-gap: 5px;
+    border-radius: 10px;
+    width: 320px; /* Set a fixed width for the game board */
+    height: 320px; /* Set a fixed height for the game board */
+}
+
+.cell {
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    cursor: pointer;
+    color: #444;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cell:hover {
+    background-color: #bbb;
+}
+
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttons .draggable-container {
+    display: flex;
+    align-items: center;
+}
+
+.buttons button {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    border: none;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%;
+    margin: 0 5px; /* Add some space between the buttons */
+    transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+    background-color: #555;
+}
+
+
+
+.board .cell.dragging {
+    background-color: red; /* Make the dragged input red */
+    border: 1px dashed black;
+}
+.dropped-x {
+    color: red; /* Make the dropped X symbol red */
+}
+/* Add this CSS to your existing styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal content */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 300px; /* Set the maximum width */
+    width: 80%; /* Adjust as needed */
+    border-radius: 10px;
+}
+
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.reset-button {
+    width: 120px; /* Width of the button */
+    height: 40px; /* Height of the button */
+    font-size: 1.2em; /* Font size */
+    border: 2px solid #ffa260; /* Border style */
+    cursor: pointer; /* Cursor on hover */
+    background-color: transparent; /* Transparent background */
+    color: #ffa260; /* Text color */
+    margin-top: 20px; /* Margin top */
+    transition: color 0.3s, border-color 0.3s; /* Smooth transition for color and border */
+  }
+  
+  .reset-button:hover,
+  .reset-button:focus {
+    color: #ff7f82; /* Text color on hover or focus */
+    border-color: #ff7f82; /* Border color on hover or focus */
+  }
+  
+  
+  
+
+/* Add this CSS to your existing styles */
+.player-names {
+    margin-bottom: 20px;
+}
+
+.player-names input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.player-names input:focus {
+    outline: none;
+    border-color: #007bff; /* Change the border color when the input is focused */
+}
+
+.start-game-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+.draggable-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.draggable-container:first-child {
+    justify-content: flex-start;
+}
+
+.draggable-container:last-child {
+    justify-content: flex-end;
+}
+
+#player1NameDisplay,
+#player2NameDisplay {
+    margin: 0 10px;
+}
+.player-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+.title{
+    margin-top: 30;
+    margin-bottom: '150px';
+}
+.back-button {
+    background: none; /* Transparent background */
+    color: #ef6eae; /* Pink text color */
+    padding: 10px 20px; /* Padding for the button */
+    border: 2px solid #ef6eae; /* Pink border */
+    cursor: pointer; /* Cursor on hover */
+    position: absolute; /* Position the button */
+    bottom: 20px; /* Distance from bottom */
+    right: 20px; /* Distance from right */
+    font-size: 16px; /* Font size */
+    transition: color 0.3s, border-color 0.3s; /* Smooth transition for color change */
+  }
+  
+  .back-button:hover {
+    color: #fff; /* White text color on hover */
+    background-color: #ef6eae; /* Pink background color on hover */
+    border-color: #ef6eae; /* Pink border color on hover */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1); /* Original size */
+    }
+    50% {
+      transform: scale(1.1); /* Slightly larger */
+    }
+    100% {
+      transform: scale(1); /* Back to original size */
+    }
+  }
+  
+  /* Apply pulse animation on hover */
+  .back-button:hover {
+    animation: pulse 1s infinite;
+  }
+  
